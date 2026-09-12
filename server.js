@@ -6,11 +6,10 @@ const cors = require('cors');
 
 const path = require('path'); 
 
- 
+
 
 const app = express(); 
 
- 
 
 // Dynamically bind to Cloud Provider Port or default local port 
 
@@ -18,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 const NODE_ENV = process.env.NODE_ENV || 'development'; 
 
- 
+
 
 // Security & Middleware Configuration 
 
@@ -26,13 +25,13 @@ app.use(cors());
 
 app.use(express.json()); 
 
- 
+
 
 // Serve Static Frontend Assets from the 'public' directory 
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 
- 
+
 
 // Health Check Endpoint for Monitoring/Uptime Services 
 
@@ -42,7 +41,7 @@ app.get('/health', (req, res) => {
 
 }); 
 
- 
+
 
 // Production API Endpoint 
 
@@ -59,11 +58,11 @@ app.get('/api/info', (req, res) => {
     });
 }); 
 
- 
+
 
 // Fallback Route: Serve index.html for Single Page Application (SPA) routing 
 
- 
+
 
 app.get(/.*/, (req, res) => { 
 
@@ -71,7 +70,7 @@ app.get(/.*/, (req, res) => {
 
 }); 
 
- 
+
 
 app.listen(PORT, () => { 
 
